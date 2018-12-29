@@ -79,17 +79,17 @@
         "__id__": 9
       },
       {
-        "__id__": 12
+        "__id__": 13
       }
     ],
     "_active": true,
     "_level": 1,
     "_components": [
       {
-        "__id__": 14
+        "__id__": 15
       },
       {
-        "__id__": 15
+        "__id__": 16
       }
     ],
     "_prefab": null,
@@ -423,6 +423,9 @@
       },
       {
         "__id__": 11
+      },
+      {
+        "__id__": 12
       }
     ],
     "_prefab": null,
@@ -516,6 +519,19 @@
     "_id": "e5/ubg8ThLN7ycDUavic4A"
   },
   {
+    "__type__": "cc.Animation",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 9
+    },
+    "_enabled": true,
+    "_defaultClip": null,
+    "_clips": [],
+    "playOnLoad": false,
+    "_id": "cfQqh4QWFGPr/AAfcyk7lN"
+  },
+  {
     "__type__": "cc.Node",
     "_name": "score",
     "_objFlags": 0,
@@ -527,7 +543,7 @@
     "_level": 2,
     "_components": [
       {
-        "__id__": 13
+        "__id__": 14
       }
     ],
     "_prefab": null,
@@ -582,7 +598,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 12
+      "__id__": 13
     },
     "_enabled": true,
     "_srcBlendFactor": 770,
@@ -641,7 +657,7 @@
       "__id__": 9
     },
     "scoreDisplay": {
-      "__id__": 13
+      "__id__": 14
     },
     "scoreAudio": {
       "__uuid__": "55d110b9-bab6-4d9d-9416-03e46904fa35"
