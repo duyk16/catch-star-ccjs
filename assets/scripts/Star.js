@@ -1,13 +1,3 @@
-// Learn cc.Class:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/class.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/class.html
-// Learn Attribute:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
-
 cc.Class({
     extends: cc.Component,
 
@@ -15,6 +5,10 @@ cc.Class({
         // When the distance between the star and main character is less than this value, collection of the point will be completed
         pickRadius: 0,
     },
+
+    // onLoad() {
+    //     console.log(this)
+    // },
 
     start () {
 
@@ -32,7 +26,7 @@ cc.Class({
         // when the stars are being collected, invoke the interface in the Game script to generate a new star
         this.game.spawnNewStar();
         // invoke the scoring method of the Game script
-        this.game.gainScore();
+        this.game.gainScore();     
         // then destroy the current star's node
         this.node.destroy();
     },

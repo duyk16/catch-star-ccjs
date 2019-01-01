@@ -1,13 +1,3 @@
-// Learn cc.Class:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/class.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/class.html
-// Learn Attribute:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
-
 cc.Class({
     extends: cc.Component,
 
@@ -71,20 +61,22 @@ cc.Class({
         }
     },
 
-    onLoad: function () {
-        // initialize jump action
-        this.jumpAction = this.setJumpAction();
-        this.node.runAction(this.jumpAction);
-
+    onLoad() {
         // Acceleration direction switch
         this.accLeft = false;
         this.accRight = false;
         // The main character's current horizontal velocity
         this.xSpeed = 0;
+    },
+
+    startPlayer: function () {
+        // initialize jump action
+        this.jumpAction = this.setJumpAction();
+        this.node.runAction(this.jumpAction);
 
         // Initialize the keyboard input listening
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
-        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);   
+        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
     },
 
     onDestroy () {
@@ -105,8 +97,14 @@ cc.Class({
             // if speed reach limit, use max speed with current direction
             this.xSpeed = this.maxMoveSpeed * this.xSpeed / Math.abs(this.xSpeed);
         }
-
-        // update the position of the main character according to the current speed
-        this.node.x += this.xSpeed * dt;
-    },
+   
+        if (this.node.x > cc.winSize.width / 2) {
+            this.node.x = (- cc.winSize.width / 2)
+        } else if (this.node.x < (- cc.winSize.width / 2) ) {
+            this.node.x = cc.winSize.width / 2
+        } else {
+            // update the position of the main character according to the current speed
+            this.node.x += this.xSpeed * dt;
+        }
+    }
 });

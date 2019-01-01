@@ -18,7 +18,6 @@ cc.Class({
         // player node for obtaining the jump height of the main character and controlling the movement switch of the main character
         player: {
             default: null,
-            type: cc.Node
         },
         // reference of score label
         scoreDisplay: {
@@ -29,10 +28,19 @@ cc.Class({
         scoreAudio: {
             default: null,
             type: cc.AudioClip
+        },
+        button: {
+            default: null,
+            type: cc.Button
         }
     },
 
-    onLoad: function () {
+    onLoad () {
+        this.player.active = false
+        console.log(this)
+    },
+
+    startGame: function () {
         // obtain the anchor point of ground level on the y axis
         this.groundY = this.ground.y + this.ground.height/2; // this.ground.top may also work
         // initialize timer
@@ -42,6 +50,10 @@ cc.Class({
         this.spawnNewStar();
         // initialize scoring
         this.score = 0;
+        this.player.active = true
+        this.player.getComponent('Player').startPlayer()
+        this.button.node.active = false
+        console.log(this.node)
     },
 
     spawnNewStar: function() {
@@ -81,17 +93,23 @@ cc.Class({
     update: function (dt) {
         // update timer for each frame, when a new star is not generated after exceeding duration
         // invoke the logic of game failure
-        if (this.timer > this.starDuration) {
+        if (this.timer > this.starDuration && !this.button.node.active) {
             this.gameOver();
             return;
         }
-        console.log(dt)
         this.timer += dt;
     },
 
     gameOver: function () {
         this.player.stopAllActions(); //stop the jumping action of the player node
-        cc.director.loadScene('Game');
+        // cc.director.loadScene('Game');
+        this.player.x = 0;
+        this.player.y = this.groundY;
+        this.button.node.active = true;
+        
+        // Delete Star node
+        this.node.getChildByName('Star').destroy()
+
     }
 
 });
