@@ -18,6 +18,7 @@ cc.Class({
         // player node for obtaining the jump height of the main character and controlling the movement switch of the main character
         player: {
             default: null,
+            type: cc.Node
         },
         // reference of score label
         scoreDisplay: {
@@ -37,7 +38,6 @@ cc.Class({
 
     onLoad () {
         this.player.active = false
-        console.log(this)
     },
 
     startGame: function () {
@@ -50,10 +50,11 @@ cc.Class({
         this.spawnNewStar();
         // initialize scoring
         this.score = 0;
+        this.scoreDisplay.string = 'Score: ' + this.score;
+        
         this.player.active = true
         this.player.getComponent('Player').startPlayer()
         this.button.node.active = false
-        console.log(this.node)
     },
 
     spawnNewStar: function() {
@@ -85,7 +86,6 @@ cc.Class({
         this.score += 1;
         // update the words of the scoreDisplay Label
         this.scoreDisplay.string = 'Score: ' + this.score;
-        console.log('Gain:', this.score)
         // play the scoring sound effect
         cc.audioEngine.playEffect(this.scoreAudio, false);
     },
@@ -106,7 +106,9 @@ cc.Class({
         this.player.x = 0;
         this.player.y = this.groundY;
         this.button.node.active = true;
-        
+
+        // Set speed to Zero
+        this.player._components[1].xSpeed = 0
         // Delete Star node
         this.node.getChildByName('Star').destroy()
 

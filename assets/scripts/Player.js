@@ -99,8 +99,8 @@ cc.Class({
         }
    
         if (this.node.x > cc.winSize.width / 2) {
-            this.node.x = (- cc.winSize.width / 2)
-        } else if (this.node.x < (- cc.winSize.width / 2) ) {
+            this.node.x = ( -cc.winSize.width / 2)
+        } else if (this.node.x < ( -cc.winSize.width / 2) ) {
             this.node.x = cc.winSize.width / 2
         } else {
             // update the position of the main character according to the current speed

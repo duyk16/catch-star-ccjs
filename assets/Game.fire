@@ -41,9 +41,9 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.930031720875755,
-      "y": 0.930031720875755,
-      "z": 0.930031720875755
+      "x": 0.7875,
+      "y": 0.7875,
+      "z": 0.7875
     },
     "_quat": {
       "__type__": "cc.Quat",
@@ -822,8 +822,8 @@
     "starPrefab": {
       "__uuid__": "a8d9937a-4895-49e6-88e6-9651a68e5188"
     },
-    "maxStarDuration": 5,
-    "minStarDuration": 4,
+    "maxStarDuration": 4,
+    "minStarDuration": 3,
     "ground": {
       "__id__": 7
     },
